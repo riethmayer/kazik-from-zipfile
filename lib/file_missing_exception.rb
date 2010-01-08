@@ -1,0 +1,2 @@
+class FileMissingException < Exception
+end

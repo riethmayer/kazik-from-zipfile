@@ -1,0 +1,2 @@
+class EmptyHandlerException < Exception
+end
