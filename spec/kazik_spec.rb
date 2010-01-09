@@ -4,6 +4,8 @@ require "spec_helper"
 
 describe "Kazik converter" do
 
+  include TestHelper
+
   describe "initialization" do
     it "should raise a ArgumentError if the argument is missing" do
       lambda { Kazik.new }.should raise_error ArgumentError
@@ -73,8 +75,9 @@ describe "Kazik converter" do
     end
 
     after :each do
-      @file.cleanup
-      FileUtils.rm_rf(Dir.glob('test/tmp/*.xml'))
+      cleanup do
+        @file.cleanup
+      end
     end
   end
 
@@ -90,7 +93,9 @@ describe "Kazik converter" do
     end
 
     after :each do
-      @file.cleanup
+      cleanup do
+        @file.cleanup
+      end
     end
   end
 

@@ -9,3 +9,10 @@ end
 require 'fileutils'
 TEST_DIRECTORY = File.join(FileUtils.pwd,"test")
 TEST_FILE = "#{TEST_DIRECTORY}/test.zip"
+
+module TestHelper
+  def cleanup
+    FileUtils.rm_rf(Dir.glob('test/tmp/*.xml'))
+    yield if block_given?
+  end
+end
